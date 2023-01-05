@@ -1,1 +1,4 @@
-# This file intentionally left blank
+RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = IS31FL3731
+OPENRGB_ENABLE = yes
+RAW_ENABLE = yes

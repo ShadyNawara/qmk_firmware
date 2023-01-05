@@ -294,7 +294,7 @@ void openrgb_get_led_info(uint8_t *data) {
             raw_hid_buffer[data_idx + 7] = KC_NO;
         }
         else {
-            raw_hid_buffer[data_idx + 7] = pgm_read_byte(&keymaps[0][row][col]);
+            raw_hid_buffer[data_idx + 7] = keycode_at_keymap_location_raw(0, row, col);
         }
     }
 }
@@ -310,7 +310,7 @@ void openrgb_set_mode(uint8_t *data) {
     const uint8_t h     = data[1];
     const uint8_t s     = data[2];
     const uint8_t v     = data[3];
-    const uint8_t mode  = data[4];
+    const uint8_t mode  = data[4] == 28 ? 27 : data[4];
     const uint8_t speed = data[5];
     const uint8_t save = data[6];
 

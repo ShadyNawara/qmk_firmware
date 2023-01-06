@@ -1,6 +1,6 @@
 {
     "manufacturer": "Shady Nawara",
-    "keyboard_name": "pimoroni/keybow2040",
+    "keyboard_name": "Keybow 2040",
     "maintainer": "Shady Nawara",
     "bootloader": "rp2040",
     "diode_direction": "COL2ROW",

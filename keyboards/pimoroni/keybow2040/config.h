@@ -3,6 +3,10 @@
 
 #pragma once
 
+#define I2C_DRIVER I2CD1
+#define I2C1_SDA_PIN GP4
+#define I2C1_SCL_PIN GP5
+
 #define DRIVER_ADDR_1 0b1110100
 
 #define DRIVER_COUNT 1

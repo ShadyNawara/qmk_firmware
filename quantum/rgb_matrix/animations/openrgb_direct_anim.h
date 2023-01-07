@@ -1,11 +1,9 @@
-#ifdef ENABLE_RGB_MATRIX_HUE_WAVE
-RGB_MATRIX_EFFECT(HUE_WAVE)
+#ifdef OPENRGB_ENABLE
+RGB_MATRIX_EFFECT(OPENRGB_DIRECT)
 #    ifdef RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 
-
-
-bool HUE_WAVE(effect_params_t* params) {
-        RGB_MATRIX_USE_LIMITS(led_min, led_max);
+bool OPENRGB_DIRECT(effect_params_t* params) {
+    RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
     for (uint8_t i = led_min; i < led_max; i++) {
         #ifdef OPENRGB_DIRECT_MODE_USE_UNIVERSAL_BRIGHTNESS
@@ -27,6 +25,5 @@ bool HUE_WAVE(effect_params_t* params) {
     }
     return led_max < RGB_MATRIX_LED_COUNT;
 }
-
-#    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
-#endif     // DISABLE_RGB_HUE_WAVE
+#    endif
+#endif

@@ -182,14 +182,27 @@ void IS31FL3731_init(uint8_t addr) {
 
 void IS31FL3731_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) {
     is31_led led;
+    uint8_t buf[2];
     if (index >= 0 && index < RGB_MATRIX_LED_COUNT) {
         memcpy_P(&led, (&g_is31_leds[index]), sizeof(led));
 
-        // Subtract 0x24 to get the second index of g_pwm_buffer
-        g_pwm_buffer[led.driver][led.r - 0x24]   = red;
-        g_pwm_buffer[led.driver][led.g - 0x24]   = green;
-        g_pwm_buffer[led.driver][led.b - 0x24]   = blue;
-        g_pwm_buffer_update_required[led.driver] = true;
+        buf[0] = led.r;
+        buf[1] = red;
+        i2c_transmit(DRIVER_ADDR_1 << 1, buf, 2, ISSI_TIMEOUT);
+
+        buf[0] = led.g;
+        buf[1] = green;
+        i2c_transmit(DRIVER_ADDR_1 << 1, buf, 2, ISSI_TIMEOUT);
+
+        buf[0] = led.b;
+        buf[1] = blue;
+        i2c_transmit(DRIVER_ADDR_1 << 1, buf, 2, ISSI_TIMEOUT);
+
+        // // Subtract 0x24 to get the second index of g_pwm_buffer
+        // g_pwm_buffer[led.driver][led.r - 0x24]   = red;
+        // g_pwm_buffer[led.driver][led.g - 0x24]   = green;
+        // g_pwm_buffer[led.driver][led.b - 0x24]   = blue;
+        // g_pwm_buffer_update_required[led.driver] = true;
     }
 }
 

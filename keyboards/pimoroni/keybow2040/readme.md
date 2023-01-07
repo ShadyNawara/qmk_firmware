@@ -1,4 +1,4 @@
-# pimoroni/keybow2040
+# Pimoroni Keybow 2040
 
 ![pimoroni/keybow2040](https://i.imgur.com/44vOQGL.jpeg)
 
